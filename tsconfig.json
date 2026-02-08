@@ -13,13 +13,13 @@
     "noUnusedParameters": true,
     "baseUrl": ".",
     "paths": {
-      "@assets/*": ["src/assets/*"],
-      "@host/*": ["src/host/*"],
-      "@view/*": ["src/webview/*"],
       "@host/utils/*": ["src/utils/host/*"],
       "@view/utils/*": ["src/utils/webview/*"],
       "@shared/utils/*": ["src/utils/shared/*"],
       "@vscode/utils/*": ["src/vscode/*"],
+      "@assets/*": ["src/assets/*"],
+      "@host/*": ["src/host/*"],
+      "@view/*": ["src/webview/*"],
       "@tests/*": ["tests/*"]
     }
   },

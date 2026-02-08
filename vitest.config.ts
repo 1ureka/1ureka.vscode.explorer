@@ -5,13 +5,13 @@ import path from "path";
  * 來自 tsconfig.json 的路徑別名設定
  */
 const alias = {
+  "@vscode/utils": path.resolve(__dirname, "src/vscode"),
+  "@shared/utils": path.resolve(__dirname, "src/utils/shared"),
+  "@host/utils": path.resolve(__dirname, "src/utils/host"),
+  "@view/utils": path.resolve(__dirname, "src/utils/webview"),
   "@assets": path.resolve(__dirname, "src/assets"),
   "@host": path.resolve(__dirname, "src/host"),
   "@view": path.resolve(__dirname, "src/webview"),
-  "@host/utils": path.resolve(__dirname, "src/utils/host"),
-  "@view/utils": path.resolve(__dirname, "src/utils/webview"),
-  "@shared/utils": path.resolve(__dirname, "src/utils/shared"),
-  "@vscode/utils": path.resolve(__dirname, "src/vscode"),
   "@tests": path.resolve(__dirname, "tests"),
 };
 

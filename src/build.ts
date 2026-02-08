@@ -7,13 +7,13 @@ import * as path from "path";
  * 來自 tsconfig.json 的路徑別名設定，供 esbuild 使用
  */
 const alias = {
-  "@assets": "./src/assets",
-  "@host": "./src/host",
-  "@view": "./src/webview",
   "@host/utils": "./src/utils/host",
   "@view/utils": "./src/utils/webview",
   "@shared/utils": "./src/utils/shared",
   "@vscode/utils": "./src/vscode",
+  "@assets": "./src/assets",
+  "@host": "./src/host",
+  "@view": "./src/webview",
 };
 
 /**
