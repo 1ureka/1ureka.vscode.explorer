@@ -21,7 +21,7 @@ const alias = {
  */
 async function buildExtension() {
   await build({
-    entryPoints: ["src/extension.ts"],
+    entryPoints: ["src/host/index.ts"],
     bundle: true,
     platform: "node",
     format: "esm",

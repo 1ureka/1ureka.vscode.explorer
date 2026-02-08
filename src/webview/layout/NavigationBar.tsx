@@ -1,7 +1,7 @@
 import { memo, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { formatRelativeTime } from "@shared/utils/formatter";
-import { setSchedule } from "@shared/utils";
+import { setSchedule } from "@shared/utils/index";
 
 import { ActionButton, ActionDropdown, ActionGroup, ActionInput } from "@view/components/Action";
 import { PropBoolean, PropEnum } from "@view/components/Props";

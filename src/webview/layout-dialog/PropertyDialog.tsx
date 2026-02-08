@@ -11,7 +11,7 @@ import { ImageDetailProps, isImageFile } from "@view/layout-dialog/ImageDetail";
 
 import type { FileMetadata } from "@host/types";
 import { formatFileSize, formatFileType, formatDateTime } from "@shared/utils/formatter";
-import { extensionIconMap } from "@/assets/fileExtMap";
+import { extensionIconMap } from "@assets/fileExtMap";
 
 /**
  * 為項目指派對應的圖示

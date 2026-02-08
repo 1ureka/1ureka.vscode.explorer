@@ -2,7 +2,7 @@ import { memo } from "react";
 import { ButtonBase, Typography } from "@mui/material";
 
 import { formatFileSize, formatFileType, formatDateTime } from "@shared/utils/formatter";
-import { extensionIconMap } from "@/assets/fileExtMap";
+import { extensionIconMap } from "@assets/fileExtMap";
 import type { FileMetadata } from "@host/types";
 
 import type { TableColumn } from "@view/layout-table/config";

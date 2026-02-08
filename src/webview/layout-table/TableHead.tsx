@@ -1,6 +1,6 @@
 import { memo } from "react";
 import { Box, SxProps, Typography } from "@mui/material";
-import { ellipsisSx } from "@view/utils/ui";
+import { ellipsisSx } from "@view/utils/style";
 
 import { viewDataStore, viewStateStore } from "@view/store/data";
 import { setSorting } from "@view/action/view";
