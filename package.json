@@ -1,5 +1,5 @@
 {
-  "name": "1ureka-vscode-extension",
+  "name": "1ureka-vscode-explorer",
   "author": "1ureka",
   "publisher": "1ureka",
   "description": "A Visual Studio Code extension developed for personal use.",
@@ -20,7 +20,7 @@
         "icon": "$(folder-library)"
       },
       {
-        "command": "1ureka.main.openNavigation",
+        "command": "1ureka.explorer.openNavigation",
         "title": "1ureka 的擴展插件",
         "icon": "$(sparkle)"
       },
@@ -39,7 +39,7 @@
           "command": "1ureka.explorer.openFromDialog"
         },
         {
-          "command": "1ureka.main.openNavigation",
+          "command": "1ureka.explorer.openNavigation",
           "when": "false"
         },
         {
@@ -72,14 +72,14 @@
       ],
       "view/title": [
         {
-          "command": "1ureka.main.openNavigation",
+          "command": "1ureka.explorer.openNavigation",
           "when": "view == workbench.explorer.fileView",
           "group": "navigation"
         }
       ],
       "editor/title": [
         {
-          "command": "1ureka.main.openNavigation",
+          "command": "1ureka.explorer.openNavigation",
           "when": "true",
           "group": "navigation"
         }
