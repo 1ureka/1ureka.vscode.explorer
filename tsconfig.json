@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "paths": {
+      "@assets/*": ["src/assets/*"],
+      "@host/*": ["src/host/*"],
+      "@view/*": ["src/webview/*"],
+      "@host/utils/*": ["src/utils/host/*"],
+      "@view/utils/*": ["src/utils/webview/*"],
+      "@shared/utils/*": ["src/utils/shared/*"],
+      "@vscode/utils/*": ["src/vscode/*"],
+      "@tests/*": ["tests/*"]
+    }
+  },
+  "include": ["src/**/*", "tests/**/*"]
+}
