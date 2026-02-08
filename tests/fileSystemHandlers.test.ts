@@ -5,9 +5,9 @@ import fs from "fs-extra";
 import { afterEach, beforeEach, describe, expect, it } from "vitest";
 import { cleanupFixtures, getFixturesPath, setupFixtures } from "@tests/fixtures.helpers";
 
-import { handleInitialData, handleReadDirectory } from "@/feature-explorer/handlers";
-import { handleCreateDir, handleCreateFile, handlePaste } from "@/feature-explorer/handlers";
-import { handleRename, handleDelete } from "@/feature-explorer/handlers";
+import { handleInitialData, handleReadDirectory } from "@host/handlers";
+import { handleCreateDir, handleCreateFile, handlePaste } from "@host/handlers";
+import { handleRename, handleDelete } from "@host/handlers";
 
 // --------------------------------------------------------------------
 

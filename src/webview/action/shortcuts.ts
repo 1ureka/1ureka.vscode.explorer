@@ -1,9 +1,9 @@
-import { navigateToNextFolder, navigateToPreviousFolder, navigateUp, refresh } from "@explorer/action/navigation";
-import { selectAll, selectInvert, selectNone } from "@explorer/action/selection";
-import { readClipboard, writeClipboard } from "@explorer/action/clipboard";
-import { actionInputClassName } from "@explorer/components/Action";
-import { deleteItems } from "@explorer/action/operation";
-import { toggleLeftPanel } from "@explorer/action/view";
+import { navigateToNextFolder, navigateToPreviousFolder, navigateUp, refresh } from "@view/action/navigation";
+import { selectAll, selectInvert, selectNone } from "@view/action/selection";
+import { readClipboard, writeClipboard } from "@view/action/clipboard";
+import { actionInputClassName } from "@view/components/Action";
+import { deleteItems } from "@view/action/operation";
+import { toggleLeftPanel } from "@view/action/view";
 
 /**
  * 註冊所有快捷鍵

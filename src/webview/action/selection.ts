@@ -1,4 +1,4 @@
-import { selectionStore } from "@explorer/store/data";
+import { selectionStore } from "@view/store/data";
 
 /** 選取某個項目 */
 const selectRow = (params: { index: number; isAdditive: boolean; isRange: boolean; forceSelect?: boolean }) => {

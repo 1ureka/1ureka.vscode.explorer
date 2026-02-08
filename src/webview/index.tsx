@@ -1,19 +1,19 @@
-import { startReactApp } from "@/utils/client/ui";
+import { startReactApp } from "@view/utils/ui";
 
-import { readInitData } from "@explorer/store/init";
-import { appStateStore } from "@explorer/store/data";
-import { setupDependencyChain } from "@explorer/store/dependency";
-import { registerAllShortcuts } from "@explorer/action/shortcuts";
-import { registerContextMenu } from "@explorer/action/contextmenu";
+import { readInitData } from "@view/store/init";
+import { appStateStore } from "@view/store/data";
+import { setupDependencyChain } from "@view/store/dependency";
+import { registerAllShortcuts } from "@view/action/shortcuts";
+import { registerContextMenu } from "@view/action/contextmenu";
 
 import { Box, type SxProps } from "@mui/material";
-import { LoadingDisplay } from "@explorer/layout/LoadingDisplay";
-import { NavigationPanels } from "@explorer/layout/NavigationPanels";
-import { NavigationBar } from "@explorer/layout/NavigationBar";
-import { TableHead } from "@explorer/layout-table/TableHead";
-import { TableBody } from "@explorer/layout-table/TableBody";
-import { ActionBar } from "@explorer/layout/ActionBar";
-import { ImageGrid } from "@explorer/layout-grid/ImageGrid";
+import { LoadingDisplay } from "@view/layout/LoadingDisplay";
+import { NavigationPanels } from "@view/layout/NavigationPanels";
+import { NavigationBar } from "@view/layout/NavigationBar";
+import { TableHead } from "@view/layout-table/TableHead";
+import { TableBody } from "@view/layout-table/TableBody";
+import { ActionBar } from "@view/layout/ActionBar";
+import { ImageGrid } from "@view/layout-grid/ImageGrid";
 
 const appClassName = {
   scrollContainer: "explorer-scroll-container",

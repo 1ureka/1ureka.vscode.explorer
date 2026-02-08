@@ -1,14 +1,14 @@
 import fs from "fs-extra";
 import * as path from "path";
 
-import { tryCatch } from "@/utils/shared";
-import { generateErrorMessage } from "@/utils/shared/formatter";
-import { readDirectory, inspectDirectory, resolvePath } from "@/utils/host/system";
-import { isRootDirectory, pathToArray, toParentPath, shortenPath } from "@/utils/host/system";
-import { openImages } from "@/utils/host/image";
+import { tryCatch } from "@shared/utils/index";
+import { generateErrorMessage } from "@shared/utils/formatter";
+import { readDirectory, inspectDirectory, resolvePath } from "@host/utils/system";
+import { isRootDirectory, pathToArray, toParentPath, shortenPath } from "@host/utils/system";
+import { openImages } from "@host/utils/image";
 
-import type { WithProgress } from "@/utils/shared/type";
-import type { ReadDirectoryParams, ReadResourceResult } from "@/feature-explorer/types";
+import type { WithProgress } from "@shared/utils/type";
+import type { ReadDirectoryParams, ReadResourceResult } from "@host/types";
 
 // ---------------------------------------------------------------------------------
 

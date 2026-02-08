@@ -4,6 +4,19 @@ import fs from "fs-extra";
 import * as path from "path";
 
 /**
+ * 來自 tsconfig.json 的路徑別名設定，供 esbuild 使用
+ */
+const alias = {
+  "@assets": "./src/assets",
+  "@host": "./src/host",
+  "@view": "./src/webview",
+  "@host/utils": "./src/utils/host",
+  "@view/utils": "./src/utils/webview",
+  "@shared/utils": "./src/utils/shared",
+  "@vscode/utils": "./src/vscode",
+};
+
+/**
  * 編譯 VS Code 擴充功能主程式
  */
 async function buildExtension() {
@@ -16,7 +29,7 @@ async function buildExtension() {
     outfile: "dist/extension.js",
     loader: { ".svg": "dataurl", ".css": "text" },
     minify: true,
-    alias: { "@": "./src" },
+    alias,
     banner: {
       js: `import { createRequire } from 'module'; const require = createRequire(import.meta.url);`,
     },
@@ -28,8 +41,9 @@ async function buildExtension() {
 /**
  * 編譯 Webview 前端程式
  */
-async function buildWebview(params: { srcPath: string; outPath: string; alias: Record<string, string> }) {
-  const { srcPath, outPath, alias } = params;
+async function buildWebview() {
+  const srcPath = "src/webview/index.tsx";
+  const outPath = "dist/webviews/index.js";
 
   await build({
     entryPoints: [srcPath],
@@ -39,7 +53,7 @@ async function buildWebview(params: { srcPath: string; outPath: string; alias: R
     outfile: outPath,
     jsx: "automatic",
     minify: true,
-    alias: { "@": "./src", ...alias },
+    alias,
   });
 
   console.log(`✓ Built WebView bundle: ${path.basename(outPath)}`);
@@ -89,18 +103,7 @@ async function main() {
 
   try {
     await buildExtension();
-
-    const webviewBuilds = [
-      {
-        srcPath: "src/webview-explorer/index.tsx",
-        outPath: "dist/webviews/explorer.js",
-        alias: { "@explorer": "./src/webview-explorer" },
-      },
-    ] as const;
-
-    for (const buildParams of webviewBuilds) {
-      await buildWebview(buildParams);
-    }
+    await buildWebview();
   } catch (error) {
     console.error("✗ Bundle compilation failed:", error);
     process.exit(1);

@@ -1,5 +1,5 @@
-import { invoke } from "@explorer/store/init";
-import { createLRUCache, createTTLCache } from "@/utils/client/cache";
+import { invoke } from "@view/store/init";
+import { createLRUCache, createTTLCache } from "@view/utils/cache";
 
 /**
  * 用於快取縮圖的 LRU 資源管理器

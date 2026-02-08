@@ -1,12 +1,12 @@
 import { memo, useState } from "react";
 import { Box } from "@mui/material";
-import { ActionButton, ActionGroup, ActionInput } from "@explorer/components/Action";
-import { clipboardStore, renameStore, selectionStore, viewDataStore } from "@explorer/store/data";
+import { ActionButton, ActionGroup, ActionInput } from "@view/components/Action";
+import { clipboardStore, renameStore, selectionStore, viewDataStore } from "@view/store/data";
 
-import { deleteItems, renameItem, renameItemTemp } from "@explorer/action/operation";
-import { readClipboard, writeClipboard } from "@explorer/action/clipboard";
-import { selectAll, selectInvert, selectNone } from "@explorer/action/selection";
-import { PropertyDialog } from "@explorer/layout-dialog/PropertyDialog";
+import { deleteItems, renameItem, renameItemTemp } from "@view/action/operation";
+import { readClipboard, writeClipboard } from "@view/action/clipboard";
+import { selectAll, selectInvert, selectNone } from "@view/action/selection";
+import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
 
 /**
  * 針對單一選取項目所顯示的操作群組 (最後選取的單一項目)

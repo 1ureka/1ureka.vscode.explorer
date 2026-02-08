@@ -1,9 +1,9 @@
 import Fuse from "fuse.js";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Box, SxProps, Typography } from "@mui/material";
-import { ActionButton, ActionGroup, ActionInput, actionSize } from "@explorer/components/Action";
-import { Tooltip } from "@explorer/components/Tooltip";
-import { colorMix } from "@/utils/client/ui";
+import { ActionButton, ActionGroup, ActionInput, actionSize } from "@view/components/Action";
+import { Tooltip } from "@view/components/Tooltip";
+import { colorMix } from "@view/utils/style";
 
 /**
  * 列表元件中，每一列的高度
@@ -279,7 +279,7 @@ const useHandleClick = (params: { onClickItem: (item: ListItem) => void; items: 
         }
       }
     },
-    [onClickItem, items]
+    [onClickItem, items],
   );
 
   return handleClick;

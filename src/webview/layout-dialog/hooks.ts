@@ -1,4 +1,4 @@
-import { selectionStore, viewDataStore } from "@explorer/store/data";
+import { selectionStore, viewDataStore } from "@view/store/data";
 
 /**
  * 取得最後一個被選取的項目

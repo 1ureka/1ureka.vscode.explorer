@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
-import { generateReactHtml } from "@/utils/vscode/webview-html";
-import type { OneOf } from "@/utils/shared/type";
-import type { WebviewId } from "@/contribute";
+import { generateReactHtml } from "@vscode/utils/webview.html";
+import type { OneOf } from "@shared/utils/type";
 
 /**
  * 建立或初始化 Webview Panel 的選項，其中
@@ -14,7 +13,7 @@ type WebviewPanelOptions<T> = {
   jsInitialData: T;
   panelResources?: vscode.Uri[];
   panelIcon?: { light: vscode.Uri; dark: vscode.Uri };
-} & OneOf<[{ panelId: WebviewId; panelTitle: string }, { panel: vscode.WebviewPanel }]>;
+} & OneOf<[{ panelId: string; panelTitle: string }, { panel: vscode.WebviewPanel }]>;
 
 /**
  * 建立一個新的 Webview Panel 或者根據 Editor 提供的 Panel 初始化 Webview Panel，其中

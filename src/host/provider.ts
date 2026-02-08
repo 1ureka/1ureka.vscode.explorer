@@ -1,13 +1,13 @@
 import * as vscode from "vscode";
 
-import { registerInvokeEvents } from "@/utils/message/host";
-import { createWebviewPanel } from "@/utils/vscode/webview";
-import { handleInitialData } from "@/feature-explorer/handlers";
-import { explorerService } from "@/feature-explorer/service";
-import type { ReadResourceResult } from "@/feature-explorer/types";
+import { registerInvokeEvents } from "@vscode/utils/message.host";
+import { createWebviewPanel } from "@vscode/utils/webview";
+import { handleInitialData } from "@host/handlers";
+import { explorerService } from "@host/service";
+import type { ReadResourceResult } from "@host/types";
 
-import explorerIconLight from "@/assets/explorer-light.svg";
-import explorerIconDark from "@/assets/explorer-dark.svg";
+import explorerIconLight from "@assets/explorer-light.svg";
+import explorerIconDark from "@assets/explorer-dark.svg";
 
 /**
  * 系統檔案瀏覽器 Webview 面板管理器，負責建立和管理瀏覽器面板
@@ -33,7 +33,7 @@ class ExplorerWebviewPanelProvider {
       context: this.context,
       panelId: "1ureka.explorer",
       panelTitle: "系統瀏覽器",
-      jsBundleName: "explorer",
+      jsBundleName: "index",
       jsInitialData: handleInitialData({ dirPath }),
       panelIcon: { light: vscode.Uri.parse(explorerIconLight), dark: vscode.Uri.parse(explorerIconDark) },
     });

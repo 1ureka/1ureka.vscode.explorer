@@ -1,4 +1,4 @@
-import { tryCatch, defer } from "@/utils/shared";
+import { tryCatch, defer } from "@shared/utils/index";
 import { create } from "zustand";
 
 // ------------------------------------------------------------------------------------------

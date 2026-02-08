@@ -1,11 +1,11 @@
-import { tableRowIndexAttr } from "@explorer/layout-table/TableRow";
-import { tableRowHeight, tableClass, tableId } from "@explorer/layout-table/config";
+import { tableRowIndexAttr } from "@view/layout-table/TableRow";
+import { tableRowHeight, tableClass, tableId } from "@view/layout-table/config";
 
-import { navigateToFolder } from "@explorer/action/navigation";
-import { openFile, startFileDrag } from "@explorer/action/operation";
-import { selectRow } from "@explorer/action/selection";
-import { selectionStore, viewDataStore } from "@explorer/store/data";
-import { clamp } from "@/utils/shared";
+import { navigateToFolder } from "@view/action/navigation";
+import { openFile, startFileDrag } from "@view/action/operation";
+import { selectRow } from "@view/action/selection";
+import { selectionStore, viewDataStore } from "@view/store/data";
+import { clamp } from "@shared/utils/index";
 
 /**
  * 根據事件獲取對應的資料列索引

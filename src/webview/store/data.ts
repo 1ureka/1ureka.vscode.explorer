@@ -4,11 +4,11 @@
  */
 
 import { create } from "zustand";
-import { invoke } from "@explorer/store/init";
-import { getInitialData } from "@/utils/message/client";
-import type { ImageMetadata } from "@/utils/host/image";
-import type { SystemFolder, VolumeInfo } from "@/utils/host/system-windows";
-import type { FileMetadata, ReadResourceResult } from "@/feature-explorer/types";
+import { invoke } from "@view/store/init";
+import { getInitialData } from "@vscode/utils/message.view";
+import type { ImageMetadata } from "@host/utils/image";
+import type { SystemFolder, VolumeInfo } from "@host/utils/system-windows";
+import type { FileMetadata, ReadResourceResult } from "@host/types";
 
 const initialData = getInitialData<ReadResourceResult>();
 if (!initialData) {

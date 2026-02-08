@@ -1,8 +1,8 @@
-import { invoke } from "@explorer/store/init";
-import { navigationStore, navigateHistoryStore, navigationExternalStore } from "@explorer/store/data";
-import { dataStore, selectionStore } from "@explorer/store/data";
-import { requestQueue } from "@explorer/store/queue";
-import type { ReadDirectoryParams } from "@/feature-explorer/types";
+import { invoke } from "@view/store/init";
+import { navigationStore, navigateHistoryStore, navigationExternalStore } from "@view/store/data";
+import { dataStore, selectionStore } from "@view/store/data";
+import { requestQueue } from "@view/store/queue";
+import type { ReadDirectoryParams } from "@host/types";
 
 /**
  * 重新整理

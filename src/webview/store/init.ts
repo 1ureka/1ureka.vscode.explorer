@@ -1,7 +1,7 @@
-import type { explorerService } from "@/feature-explorer/service";
-import { createInvoke } from "@/utils/message/client";
-import { dataStore, navigationExternalStore } from "@explorer/store/data";
-import { requestQueue } from "@explorer/store/queue";
+import type { explorerService } from "@host/service";
+import { createInvoke } from "@vscode/utils/message.view";
+import { dataStore, navigationExternalStore } from "@view/store/data";
+import { requestQueue } from "@view/store/queue";
 
 /**
  * 建立用於調用延伸主機 API 的函式

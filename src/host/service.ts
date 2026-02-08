@@ -1,14 +1,14 @@
 import * as vscode from "vscode";
 
-import { pasteOptions, pastePickOptions } from "@/feature-explorer/config";
-import { handleDelete, handlePaste, handleRename } from "@/feature-explorer/handlers";
-import { handleCreateFile, handleCreateDir } from "@/feature-explorer/handlers";
-import { handleReadDirectory, handleReadImages } from "@/feature-explorer/handlers";
+import { pasteOptions, pastePickOptions } from "@host/config";
+import { handleDelete, handlePaste, handleRename } from "@host/handlers";
+import { handleCreateFile, handleCreateDir } from "@host/handlers";
+import { handleReadDirectory, handleReadImages } from "@host/handlers";
 
-import { generateThumbnail, openImage } from "@/utils/host/image";
-import { listSystemFolders, listVolumes } from "@/utils/host/system-windows";
-import { getFileAttributes, getFileAvailability, getDirectorySizeInfo } from "@/utils/host/system-windows";
-import type { WithProgress } from "@/utils/shared/type";
+import { generateThumbnail, openImage } from "@host/utils/image";
+import { listSystemFolders, listVolumes } from "@host/utils/system-windows";
+import { getFileAttributes, getFileAvailability, getDirectorySizeInfo } from "@host/utils/system-windows";
+import type { WithProgress } from "@shared/utils/type";
 
 /**
  * 顯示一般資訊提示訊息

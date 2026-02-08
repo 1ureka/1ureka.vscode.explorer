@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Box, Divider } from "@mui/material";
-import { Panel } from "@explorer/components/Panel";
-import { List, type ListItem } from "@explorer/components/List";
-import { ActionButton, ActionDropdown, ActionDropdownButton, ActionGroup } from "@explorer/components/Action";
-import { navigateHistoryStore, navigationExternalStore, navigationStore } from "@explorer/store/data";
-import { clearNavigationHistory, navigateToFolder, readDrives } from "@explorer/action/navigation";
-import { formatFileSize } from "@/utils/shared/formatter";
+import { Panel } from "@view/components/Panel";
+import { List, type ListItem } from "@view/components/List";
+import { ActionButton, ActionDropdown, ActionDropdownButton, ActionGroup } from "@view/components/Action";
+import { navigateHistoryStore, navigationExternalStore, navigationStore } from "@view/store/data";
+import { clearNavigationHistory, navigateToFolder, readDrives } from "@view/action/navigation";
+import { formatFileSize } from "@shared/utils/formatter";
 
 const fakeBookmarkItems: ListItem[] = [
   {

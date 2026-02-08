@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { Box, SxProps, Typography } from "@mui/material";
-import { ellipsisSx } from "@/utils/client/ui";
+import { ellipsisSx } from "@view/utils/ui";
 
-import { viewDataStore, viewStateStore } from "@explorer/store/data";
-import { setSorting } from "@explorer/action/view";
-import { tableColumns, tableHeadHeight, tableIconWidth } from "@explorer/layout-table/config";
-import type { TableColumn } from "@explorer/layout-table/config";
+import { viewDataStore, viewStateStore } from "@view/store/data";
+import { setSorting } from "@view/action/view";
+import { tableColumns, tableHeadHeight, tableIconWidth } from "@view/layout-table/config";
+import type { TableColumn } from "@view/layout-table/config";
 
 /**
  * 用於表格標題列的單元格樣式變體

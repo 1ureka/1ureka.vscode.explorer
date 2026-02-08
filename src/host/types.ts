@@ -1,6 +1,6 @@
-import type { ImageMetadata } from "@/utils/host/image";
-import type { InspectDirectoryEntry } from "@/utils/host/system";
-import type { OneOf, Prettify } from "@/utils/shared/type";
+import type { ImageMetadata } from "@host/utils/image";
+import type { InspectDirectoryEntry } from "@host/utils/system";
+import type { OneOf, Prettify } from "@shared/utils/type";
 
 /**
  * 檔案系統延伸主機以資料夾模式讀取下，每個條目的元資料型別

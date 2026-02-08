@@ -2,13 +2,13 @@ import { memo, useEffect, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Box, keyframes, type SxProps } from "@mui/material";
 
-import { tableAlternateBgcolor, tableClass, tableId } from "@explorer/layout-table/config";
-import { tableRowHeight, tableIconWidth, tableIconFontSize } from "@explorer/layout-table/config";
-import { TableRow, TableRowNoItem } from "@explorer/layout-table/TableRow";
+import { tableAlternateBgcolor, tableClass, tableId } from "@view/layout-table/config";
+import { tableRowHeight, tableIconWidth, tableIconFontSize } from "@view/layout-table/config";
+import { TableRow, TableRowNoItem } from "@view/layout-table/TableRow";
 
-import { loadingStore } from "@explorer/store/queue";
-import { viewDataStore } from "@explorer/store/data";
-import { handleClick, handleContextMenu, handleDragStart } from "@explorer/action/table";
+import { loadingStore } from "@view/store/queue";
+import { viewDataStore } from "@view/store/data";
+import { handleClick, handleContextMenu, handleDragStart } from "@view/action/table";
 
 /**
  * ### 表格背景設計

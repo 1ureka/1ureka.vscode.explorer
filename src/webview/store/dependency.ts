@@ -3,10 +3,10 @@
  * @description 該文件負責定義更新鏈/依賴鏈
  */
 
-import { clipboardStore, dataStore, navigationStore, viewDataStore, viewStateStore } from "@explorer/store/data";
-import { selectionStore, renameStore } from "@explorer/store/data";
-import { sortCompare } from "@/utils/shared/collator";
-import type { FileMetadata } from "@/feature-explorer/types";
+import { clipboardStore, dataStore, navigationStore, viewDataStore, viewStateStore } from "@view/store/data";
+import { selectionStore, renameStore } from "@view/store/data";
+import { sortCompare } from "@shared/utils/collator";
+import type { FileMetadata } from "@host/types";
 
 /**
  * 根據目前的篩選條件回傳篩選後的檔案屬性陣列

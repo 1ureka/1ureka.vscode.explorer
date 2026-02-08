@@ -1,14 +1,14 @@
 import { memo } from "react";
 import { ButtonBase, Typography } from "@mui/material";
 
-import { formatFileSize, formatFileType, formatFixedLengthDateTime } from "@/utils/shared/formatter";
+import { formatFileSize, formatFileType, formatDateTime } from "@shared/utils/formatter";
 import { extensionIconMap } from "@/assets/fileExtMap";
-import type { FileMetadata } from "@/feature-explorer/types";
+import type { FileMetadata } from "@host/types";
 
-import type { TableColumn } from "@explorer/layout-table/config";
-import { tableColumns, tableClass } from "@explorer/layout-table/config";
-import { clipboardStore, selectionStore, viewDataStore, viewStateStore } from "@explorer/store/data";
-import { loadingStore } from "@explorer/store/queue";
+import type { TableColumn } from "@view/layout-table/config";
+import { tableColumns, tableClass } from "@view/layout-table/config";
+import { clipboardStore, selectionStore, viewDataStore, viewStateStore } from "@view/store/data";
+import { loadingStore } from "@view/store/queue";
 
 /**
  * 表格列儲存在 html 中的指標屬性名稱
@@ -45,9 +45,9 @@ const TableCell = ({ column, row }: { column: TableColumn; row: FileMetadata }) 
   if (field === "fileType") {
     text = formatFileType({ fileName, fileType });
   } else if (field === "ctime") {
-    text = formatFixedLengthDateTime(new Date(ctime));
+    text = formatDateTime(new Date(ctime));
   } else if (field === "mtime") {
-    text = formatFixedLengthDateTime(new Date(mtime));
+    text = formatDateTime(new Date(mtime));
   } else if (field === "size") {
     text = fileType === "file" ? formatFileSize(size) : "";
   } else {

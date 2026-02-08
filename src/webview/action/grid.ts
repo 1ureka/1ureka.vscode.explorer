@@ -1,5 +1,5 @@
-import { openFile, startFileDrag } from "@explorer/action/operation";
-import { imageGridClass, imageGridItemDataAttr } from "@explorer/layout-grid/ImageGrid";
+import { openFile, startFileDrag } from "@view/action/operation";
+import { imageGridClass, imageGridItemDataAttr } from "@view/layout-grid/ImageGrid";
 
 /**
  * 根據事件獲取對應的元資料

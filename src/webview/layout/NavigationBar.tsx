@@ -1,19 +1,19 @@
 import { memo, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
-import { formatRelativeTime } from "@/utils/shared/formatter";
-import { setSchedule } from "@/utils/shared";
+import { formatRelativeTime } from "@shared/utils/formatter";
+import { setSchedule } from "@shared/utils";
 
-import { ActionButton, ActionDropdown, ActionGroup, ActionInput } from "@explorer/components/Action";
-import { PropBoolean, PropEnum } from "@explorer/components/Props";
-import { dataStore, viewDataStore, viewStateStore } from "@explorer/store/data";
-import { navigateHistoryStore, navigationStore } from "@explorer/store/data";
+import { ActionButton, ActionDropdown, ActionGroup, ActionInput } from "@view/components/Action";
+import { PropBoolean, PropEnum } from "@view/components/Props";
+import { dataStore, viewDataStore, viewStateStore } from "@view/store/data";
+import { navigateHistoryStore, navigationStore } from "@view/store/data";
 
-import { stageDestinationPath, navigateGotoFolder, navigateUp, refresh } from "@explorer/action/navigation";
-import { navigateToFolder, navigateToNextFolder, navigateToPreviousFolder } from "@explorer/action/navigation";
-import { navigateToImageGridView } from "@explorer/action/navigation";
-import { setSortField, setSortOrder, setFilterOption, toggleFilter } from "@explorer/action/view";
-import { setGridSize, getGridSize, setGridGap } from "@explorer/action/view";
-import { createNewFolder } from "@explorer/action/operation";
+import { stageDestinationPath, navigateGotoFolder, navigateUp, refresh } from "@view/action/navigation";
+import { navigateToFolder, navigateToNextFolder, navigateToPreviousFolder } from "@view/action/navigation";
+import { navigateToImageGridView } from "@view/action/navigation";
+import { setSortField, setSortOrder, setFilterOption, toggleFilter } from "@view/action/view";
+import { setGridSize, getGridSize, setGridGap } from "@view/action/view";
+import { createNewFolder } from "@view/action/operation";
 
 /**
  * 重新整理按鈕，會顯示上次更新的相對時間，並且會自動更新

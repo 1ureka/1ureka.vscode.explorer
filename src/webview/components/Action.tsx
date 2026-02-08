@@ -1,8 +1,8 @@
 import { memo, useState } from "react";
-import { centerTextSx, colorMix } from "@/utils/client/ui";
+import { centerTextSx, colorMix } from "@view/utils/style";
 import { Box, ButtonBase, InputBase, Popover, Typography } from "@mui/material";
 import type { SxProps, PopoverOrigin } from "@mui/material";
-import { Tooltip } from "@explorer/components/Tooltip";
+import { Tooltip } from "@view/components/Tooltip";
 
 /**
  * 操作元件的 className

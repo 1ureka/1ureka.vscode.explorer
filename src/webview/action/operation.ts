@@ -1,6 +1,6 @@
-import { invoke } from "@explorer/store/init";
-import { dataStore, renameStore, selectionStore, viewDataStore } from "@explorer/store/data";
-import { requestQueue } from "@explorer/store/queue";
+import { invoke } from "@view/store/init";
+import { dataStore, renameStore, selectionStore, viewDataStore } from "@view/store/data";
+import { requestQueue } from "@view/store/queue";
 
 type StartDragEvent = React.DragEvent | DragEvent;
 

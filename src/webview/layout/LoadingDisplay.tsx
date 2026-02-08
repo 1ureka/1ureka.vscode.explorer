@@ -1,4 +1,4 @@
-import { loadingStore } from "@explorer/store/queue";
+import { loadingStore } from "@view/store/queue";
 import { Box, LinearProgress } from "@mui/material";
 import { memo } from "react";
 

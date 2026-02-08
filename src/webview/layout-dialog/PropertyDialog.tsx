@@ -1,16 +1,16 @@
 import { memo, Suspense } from "react";
 import { Box } from "@mui/material";
 
-import { Dialog } from "@explorer/components/Dialog";
-import { propertyDialogSx, propertyDialogClassName, rowHeight } from "@explorer/layout-dialog/config";
-import { ActionButton, ActionGroup, ActionInput } from "@explorer/components/Action";
-import { useLastSelectedItem } from "@explorer/layout-dialog/hooks";
-import { directorySizeInfoCache, fileAttributesCache, fileAvailabilityCache } from "@explorer/store/cache";
-import { writeSystemClipboard } from "@explorer/action/clipboard";
-import { ImageDetailProps, isImageFile } from "@explorer/layout-dialog/ImageDetail";
+import { Dialog } from "@view/components/Dialog";
+import { propertyDialogSx, propertyDialogClassName, rowHeight } from "@view/layout-dialog/config";
+import { ActionButton, ActionGroup, ActionInput } from "@view/components/Action";
+import { useLastSelectedItem } from "@view/layout-dialog/hooks";
+import { directorySizeInfoCache, fileAttributesCache, fileAvailabilityCache } from "@view/store/cache";
+import { writeSystemClipboard } from "@view/action/clipboard";
+import { ImageDetailProps, isImageFile } from "@view/layout-dialog/ImageDetail";
 
-import type { FileMetadata } from "@/feature-explorer/types";
-import { formatFileSize, formatFileType, formatFixedLengthDateTime } from "@/utils/shared/formatter";
+import type { FileMetadata } from "@host/types";
+import { formatFileSize, formatFileType, formatDateTime } from "@shared/utils/formatter";
 import { extensionIconMap } from "@/assets/fileExtMap";
 
 /**
@@ -221,10 +221,10 @@ const PropertyDialog = memo(({ open, onClose }: { open: boolean; onClose: () => 
           )}
 
           <p className={className.groupLabel}>建立時間:</p>
-          <p className={className.groupValue}>{formatFixedLengthDateTime(new Date(selectedItem.ctime))}</p>
+          <p className={className.groupValue}>{formatDateTime(new Date(selectedItem.ctime))}</p>
 
           <p className={className.groupLabel}>修改時間:</p>
-          <p className={className.groupValue}>{formatFixedLengthDateTime(new Date(selectedItem.mtime))}</p>
+          <p className={className.groupValue}>{formatDateTime(new Date(selectedItem.mtime))}</p>
         </div>
 
         {type !== "other" && <hr className={className.divider} />}

@@ -1,4 +1,4 @@
-import { appStateStore, viewStateStore, type ViewState } from "@explorer/store/data";
+import { appStateStore, viewStateStore, type ViewState } from "@view/store/data";
 
 /** 開/關左側面板 */
 const toggleLeftPanel = () => {

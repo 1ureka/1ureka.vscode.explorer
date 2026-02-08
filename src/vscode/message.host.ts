@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import type { Service, InvokeMessage, InvokeResponseMessage } from "@/utils/message/type";
+import type { Service, InvokeMessage, InvokeResponseMessage } from "@vscode/utils/message.type";
 
 /**
  * 註冊多個處理函式來處理來自 webview 的調用請求

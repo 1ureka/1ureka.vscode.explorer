@@ -1,5 +1,5 @@
-import type { FileMetadata } from "@/feature-explorer/types";
-import { colorMix } from "@/utils/client/ui";
+import type { FileMetadata } from "@host/types";
+import { colorMix } from "@view/utils/ui";
 
 /** 表格單元格的對齊方式 */
 type TableCellAlign = "left" | "right" | "center";

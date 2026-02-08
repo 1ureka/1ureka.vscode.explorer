@@ -1,27 +1,7 @@
-import { extensionTypeMap } from "@/assets/fileExtMap";
-
-/** 格式化日期為 "MM-DD HH:mm" */
-function formatDateCompact(date: Date): string {
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  return `${month}-${day} ${hours}:${minutes}`;
-}
-
-/** 格式化日期為 "YYYY-MM-DD HH:mm:ss" */
-function formatDateFull(date: Date): string {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  const hours = String(date.getHours()).padStart(2, "0");
-  const minutes = String(date.getMinutes()).padStart(2, "0");
-  const seconds = String(date.getSeconds()).padStart(2, "0");
-  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
-}
+import { extensionTypeMap } from "@assets/fileExtMap";
 
 /** 將 Date 物件格式化為 "DD MMM YYYY HH:MM" 的固定長度字串。(例如: 18 Nov 2025 22:49) */
-function formatFixedLengthDateTime(dateObj: Date): string {
+function formatDateTime(dateObj: Date): string {
   const day = dateObj.getDate().toString().padStart(2, "0"); // 日 (DD, 兩位數)
   const year = dateObj.getFullYear(); // 年 (YYYY, 四位數)
 
@@ -130,7 +110,7 @@ function generateErrorMessage({ action, itemCount, itemFailures, sideEffects }: 
     sideEffectEntries.length === 0
       ? "## 影響範圍\n\n> 無顯著副作用或影響範圍。\n"
       : ["## 影響範圍", "", "下列為此操作可能造成的影響：", "", ...sideEffectEntries.map(getSideEffectMessage)].join(
-          "\n"
+          "\n",
         );
 
   return [title, summary, failureDetails, sideEffectSection].join("\n\n---\n\n");
@@ -160,5 +140,5 @@ const formatFileType = (params: { fileName: string; fileType: string }): string 
   return label;
 };
 
-export { formatFixedLengthDateTime, formatRelativeTime };
-export { formatDateCompact, formatDateFull, formatFileSize, formatFileType, generateErrorMessage };
+export { formatDateTime, formatRelativeTime };
+export { formatFileSize, formatFileType, generateErrorMessage };

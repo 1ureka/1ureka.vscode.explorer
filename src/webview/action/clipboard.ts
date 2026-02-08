@@ -1,7 +1,7 @@
-import type { FileMetadata } from "@/feature-explorer/types";
-import { invoke } from "@explorer/store/init";
-import { clipboardStore, dataStore, selectionStore, viewDataStore } from "@explorer/store/data";
-import { requestQueue } from "@explorer/store/queue";
+import type { FileMetadata } from "@host/types";
+import { invoke } from "@view/store/init";
+import { clipboardStore, dataStore, selectionStore, viewDataStore } from "@view/store/data";
+import { requestQueue } from "@view/store/queue";
 
 /**
  * 將目前選取的檔案寫入到應用程式剪貼簿，會覆蓋先前的內容

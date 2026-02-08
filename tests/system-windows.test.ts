@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeAll } from "vitest";
-import { listSystemFolders, listVolumes } from "@/utils/host/system-windows";
-import { getFileAttributes, getFileAvailability, getDirectorySizeInfo } from "@/utils/host/system-windows";
-import { DriveType, SystemFolder } from "@/utils/host/system-windows";
+import { listSystemFolders, listVolumes } from "@host/utils/system-windows";
+import { getFileAttributes, getFileAvailability, getDirectorySizeInfo } from "@host/utils/system-windows";
+import { DriveType, SystemFolder } from "@host/utils/system-windows";
 import * as path from "path";
 
 describe("system_windows", () => {

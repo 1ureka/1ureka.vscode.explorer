@@ -1,6 +1,6 @@
-import { appStateStore } from "@explorer/store/data";
-import { tableClass } from "@explorer/layout-table/config";
-import { tableRowIndexAttr } from "@explorer/layout-table/TableRow";
+import { appStateStore } from "@view/store/data";
+import { tableClass } from "@view/layout-table/config";
+import { tableRowIndexAttr } from "@view/layout-table/TableRow";
 
 /**
  * 根據事件獲取對應的資料列索引

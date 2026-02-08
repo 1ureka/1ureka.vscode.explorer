@@ -1,12 +1,37 @@
 import * as vscode from "vscode";
+import type { CommandId } from "@vscode/utils/command.type";
 
-/** 使用者選擇要對剪貼簿中的項目執行的操作時的標題 */
+/**
+ * 使用者選擇要開啟主要導航選單的選項
+ */
+const navigationOptions: (vscode.QuickPickItem & { commandId: CommandId })[] = [
+  {
+    iconPath: new vscode.ThemeIcon("folder-library"),
+    label: "系統瀏覽器",
+    description: "$(root-folder) 當前目錄",
+    detail: "使用系統瀏覽器開啟當前工作目錄",
+    commandId: "1ureka.explorer.openFromPath",
+  },
+  {
+    iconPath: new vscode.ThemeIcon("folder-library"),
+    label: "系統瀏覽器",
+    description: "$(link-external) 指定目錄",
+    detail: "在預設的瀏覽器中選擇目錄後以系統瀏覽器開啟",
+    commandId: "1ureka.explorer.openFromDialog",
+  },
+];
+
+/**
+ * 使用者選擇要對剪貼簿中的項目執行的操作時的標題
+ */
 const pastePickOptions: vscode.QuickPickOptions = {
   title: "對於每個項目...",
   placeHolder: "請選擇對於剪貼簿的每個項目，要執行的操作",
 };
 
-/** 使用者選擇要對剪貼簿中的項目執行的操作時的選項 */
+/**
+ * 使用者選擇要對剪貼簿中的項目執行的操作時的選項
+ */
 const pasteOptions: (vscode.QuickPickItem & { type?: "copy" | "move"; overwrite?: boolean })[] = [
   {
     label: "複製",
@@ -51,4 +76,4 @@ const pasteOptions: (vscode.QuickPickItem & { type?: "copy" | "move"; overwrite?
   },
 ];
 
-export { pasteOptions, pastePickOptions };
+export { navigationOptions, pasteOptions, pastePickOptions };

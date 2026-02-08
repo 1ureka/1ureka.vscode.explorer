@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { defer } from "@/utils/shared";
-import type { Promised } from "@/utils/shared/type";
-import type { Service, InvokeMessage, InvokeResponseMessage } from "@/utils/message/type";
+import { defer } from "@shared/utils/index";
+import type { Promised } from "@shared/utils/type";
+import type { Service, InvokeMessage, InvokeResponseMessage } from "@vscode/utils/message.type";
 
 /**
  * 獲取初始數據（從 HTML 中的 script 標籤提取）

@@ -1,7 +1,7 @@
 import sharp from "sharp";
 import fs from "fs-extra";
 import * as path from "path";
-import { typedKeys } from "@/utils/shared";
+import { typedKeys } from "@shared/utils/index";
 
 /**
  * 在當前執行環境中，取得 sharp 支援的圖片格式清單

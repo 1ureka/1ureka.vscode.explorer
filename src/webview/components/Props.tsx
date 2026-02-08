@@ -1,4 +1,4 @@
-import { colorMix } from "@/utils/client/ui";
+import { colorMix } from "@view/utils/style";
 import { Box, Checkbox, FormControlLabel, ButtonBase } from "@mui/material";
 import type { SxProps } from "@mui/material";
 

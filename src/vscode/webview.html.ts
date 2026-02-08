@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import webviewCSS from "@/assets/webview.css";
+import webviewCSS from "@assets/webview.css";
 
 /**
  * 將資料序列化為適合插入 HTML 的字串
