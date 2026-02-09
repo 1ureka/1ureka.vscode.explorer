@@ -3,7 +3,7 @@
   "author": "1ureka",
   "publisher": "1ureka",
   "description": "A Visual Studio Code extension developed for personal use.",
-  "version": "0.6.6",
+  "version": "0.1.0",
   "main": "./dist/extension.js",
   "type": "module",
   "engines": {
@@ -21,8 +21,8 @@
       },
       {
         "command": "1ureka.explorer.openNavigation",
-        "title": "1ureka 的擴展插件",
-        "icon": "$(sparkle)"
+        "title": "開啟系統瀏覽器",
+        "icon": "$(folder-library)"
       },
       {
         "command": "1ureka.explorer.openFromPath",
