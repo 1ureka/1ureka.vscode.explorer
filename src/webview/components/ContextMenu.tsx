@@ -51,7 +51,9 @@ export const ContextMenu = ({ clickedIndex }: ContextMenuProps) => {
   };
 
   const handleShowProperties = () => {
-    setPropertyDialogOpen(true);
+    if (clickedEntry) {
+      setPropertyDialogOpen(true);
+    }
     handleClose();
   };
 
