@@ -14,6 +14,7 @@ import { TableHead } from "@view/layout-table/TableHead";
 import { TableBody } from "@view/layout-table/TableBody";
 import { ActionBar } from "@view/layout/ActionBar";
 import { ImageGrid } from "@view/layout-grid/ImageGrid";
+import { ContextMenu } from "@view/components/ContextMenu";
 
 const appClassName = {
   scrollContainer: "explorer-scroll-container",
@@ -70,6 +71,7 @@ const containerSx: SxProps = {
 
 const App = () => {
   const showLeftPanel = appStateStore((state) => state.showLeftPanel);
+  const contextMenuIndex = appStateStore((state) => state.contextMenuIndex);
 
   return (
     <Box className={appClassName.scrollContainer} sx={containerSx}>
@@ -89,6 +91,7 @@ const App = () => {
           </Box>
         </div>
         <LoadingDisplay />
+        <ContextMenu clickedIndex={contextMenuIndex} />
       </div>
     </Box>
   );

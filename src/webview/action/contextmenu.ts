@@ -18,7 +18,7 @@ const getIndexFromEvent = (e: PointerEvent) => {
 };
 
 /**
- * ?
+ * 處理右鍵選單事件
  */
 const registerContextMenu = () => {
   const handleContextMenu = (e: PointerEvent) => {
@@ -28,15 +28,11 @@ const registerContextMenu = () => {
     e.stopPropagation();
     if (!e.target) return;
 
-    appStateStore.setState({ contextMenuAnchor: { x: e.clientX, y: e.clientY } });
     const index = getIndexFromEvent(e);
-
-    if (index === null) {
-      // TODO: 決定不在 row 上右鍵時 context menu 的內容
-      return;
-    }
-
-    // TODO: 根據 index 決定 context menu 的內容
+    appStateStore.setState({ 
+      contextMenuAnchor: { x: e.clientX, y: e.clientY },
+      contextMenuIndex: index 
+    });
   };
 
   window.addEventListener("contextmenu", handleContextMenu, true);
@@ -46,7 +42,7 @@ const registerContextMenu = () => {
  * 關閉右鍵選單
  */
 const closeContextMenu = () => {
-  appStateStore.setState({ contextMenuAnchor: null });
+  appStateStore.setState({ contextMenuAnchor: null, contextMenuIndex: null });
 };
 
 export { registerContextMenu, closeContextMenu };
