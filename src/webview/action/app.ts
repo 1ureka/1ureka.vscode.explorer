@@ -48,15 +48,15 @@ const closeContextMenu = () => {
 /**
  * 開啟內容對話框
  */
-const openContentDialog = () => {
-  appStateStore.setState({ showContentDialog: true });
+const openPropertyDialog = () => {
+  appStateStore.setState({ showPropertyDialog: true });
 };
 
 /**
  * 關閉內容對話框
  */
-const closeContentDialog = () => {
-  appStateStore.setState({ showContentDialog: false });
+const closePropertyDialog = () => {
+  appStateStore.setState({ showPropertyDialog: false });
 };
 
-export { registerContextMenu, closeContextMenu, openContentDialog, closeContentDialog };
+export { registerContextMenu, closeContextMenu, openPropertyDialog, closePropertyDialog };

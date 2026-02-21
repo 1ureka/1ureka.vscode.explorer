@@ -3,7 +3,7 @@ import { appStateStore, dataStore, selectionStore, clipboardStore, viewDataStore
 import { openInEnvironment, navigateUp } from "@view/action/navigation";
 import { writeClipboard, readClipboard } from "@view/action/clipboard";
 import { openFile, createNewFolder, createNewFile } from "@view/action/operation";
-import { openContentDialog } from "@view/action/app";
+import { openPropertyDialog } from "@view/action/app";
 
 /**
  * 右鍵選單元件
@@ -47,7 +47,7 @@ export const ContextMenu = () => {
 
   const handleShowProperties = () => {
     if (clickedEntry) {
-      openContentDialog();
+      openPropertyDialog();
     }
     handleClose();
   };

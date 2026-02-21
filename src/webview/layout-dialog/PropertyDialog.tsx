@@ -11,7 +11,7 @@ import { ImageDetailProps, isImageFile } from "@view/layout-dialog/ImageDetail";
 import { directorySizeInfoCache, fileAttributesCache, fileAvailabilityCache } from "@view/store/cache";
 import { appStateStore } from "@view/store/data";
 import { writeSystemClipboard } from "@view/action/clipboard";
-import { closeContentDialog } from "@view/action/app";
+import { closePropertyDialog } from "@view/action/app";
 
 import type { FileMetadata } from "@host/types";
 import { formatFileSize, formatFileType, formatDateTime } from "@shared/utils/formatter";
@@ -168,7 +168,7 @@ const DirProps = memo(() => {
  */
 const PropertyDialog = memo(() => {
   const selectedItem = useLastSelectedItem();
-  const open = appStateStore((state) => state.showContentDialog);
+  const open = appStateStore((state) => state.showPropertyDialog);
 
   if (!selectedItem) return null;
 
@@ -182,7 +182,7 @@ const PropertyDialog = memo(() => {
   }
 
   return (
-    <Dialog open={open} onClose={closeContentDialog}>
+    <Dialog open={open} onClose={closePropertyDialog}>
       <Box sx={propertyDialogSx}>
         <div className={className.header}>
           <i className={assignIcon(selectedItem)} />
@@ -241,7 +241,7 @@ const PropertyDialog = memo(() => {
 
       <Box sx={{ position: "absolute", inset: "0px 0px auto auto", p: 1.5 }}>
         <ActionGroup size="small">
-          <ActionButton actionIcon="codicon codicon-close" actionName="關閉" onClick={closeContentDialog} />
+          <ActionButton actionIcon="codicon codicon-close" actionName="關閉" onClick={closePropertyDialog} />
         </ActionGroup>
       </Box>
     </Dialog>

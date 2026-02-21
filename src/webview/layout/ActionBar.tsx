@@ -6,7 +6,7 @@ import { clipboardStore, renameStore, selectionStore, viewDataStore } from "@vie
 import { deleteItems, renameItem, renameItemTemp } from "@view/action/operation";
 import { readClipboard, writeClipboard } from "@view/action/clipboard";
 import { selectAll, selectInvert, selectNone } from "@view/action/selection";
-import { openContentDialog } from "@view/action/app";
+import { openPropertyDialog } from "@view/action/app";
 
 /**
  * 針對單一選取項目所顯示的操作群組 (最後選取的單一項目)
@@ -36,7 +36,7 @@ const ActionGroupForSingleItem = memo(() => {
         actionName="內容"
         actionDetail="檢視檔案或資料夾的詳細資訊"
         disabled={lastSelectedIndex === null}
-        onClick={openContentDialog}
+        onClick={openPropertyDialog}
       />
     </ActionGroup>
   );

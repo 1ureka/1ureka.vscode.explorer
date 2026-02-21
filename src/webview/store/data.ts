@@ -17,7 +17,7 @@ if (!initialData) {
 }
 
 const initialAppState = {
-  showContentDialog: false,
+  showPropertyDialog: false,
   showLeftPanel: true,
   contextMenuAnchor: null,
   contextMenuIndex: null,
@@ -60,7 +60,7 @@ const initialViewState: ViewState = {
 // ----------------------------------------------------------------------------
 
 type AppState = {
-  showContentDialog: boolean;
+  showPropertyDialog: boolean;
   showLeftPanel: boolean;
   contextMenuAnchor: { x: number; y: number } | null;
   contextMenuIndex: number | null;
