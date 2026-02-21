@@ -68,7 +68,7 @@ async function packageExtension() {
   // 檢查 vsce 是否已安裝在環境中
   try {
     execSync("vsce --version", { stdio: "ignore" });
-  } catch (e) {
+  } catch {
     console.error("❌ Error: 'vsce' command not found.");
     console.error("   Please install it globally using: npm install -g @vscode/vsce");
     process.exit(1);
