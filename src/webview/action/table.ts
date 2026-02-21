@@ -256,17 +256,6 @@ const handleClick = (e: React.MouseEvent) => {
   }
 };
 
-/**
- * 處理右鍵點擊某一資料列的事件
- */
-const handleContextMenu = (e: React.MouseEvent) => {
-  const index = getIndexFromEvent(e);
-  if (index === null) return;
-
-  // 該設置是為了方便在右鍵選單中透過強制選取該列，來重新命名、刪除等操作
-  selectRow({ index, isAdditive: true, isRange: false, forceSelect: true });
-};
-
 // ---------------------------------------------------------------------------------
 
-export { handleClick, handleContextMenu, handleDragStart };
+export { handleClick, handleDragStart };

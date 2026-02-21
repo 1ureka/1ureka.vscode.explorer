@@ -3,13 +3,23 @@ import { appStateStore, dataStore, selectionStore, clipboardStore, viewDataStore
 import { openInEnvironment, navigateUp } from "@view/action/navigation";
 import { writeClipboard, readClipboard } from "@view/action/clipboard";
 import { openFile, createNewFolder, createNewFile } from "@view/action/operation";
-import { openPropertyDialog } from "@view/action/app";
+import { closeContextMenu, openPropertyDialog } from "@view/action/app";
+
+/**
+ * 創建給右鍵選單用的 handler (包裝)
+ */
+const createContextMenuHandler = (handler: () => void) => {
+  return () => {
+    handler();
+    closeContextMenu();
+  };
+};
 
 /**
  * 右鍵選單元件
  */
 export const ContextMenu = () => {
-  const clickedIndex = appStateStore((state) => state.contextMenuIndex);
+  const lastSelectedIndex = selectionStore((state) => state.lastSelectedIndex);
   const contextMenuAnchor = appStateStore((state) => state.contextMenuAnchor);
 
   const isCurrentRoot = dataStore((state) => state.isCurrentRoot);
@@ -17,70 +27,19 @@ export const ContextMenu = () => {
   const clipboardEntries = clipboardStore((state) => state.entries);
   const entries = viewDataStore((state) => state.entries);
 
-  const open = Boolean(contextMenuAnchor);
   const hasSelection = selected.some((s) => s === 1);
   const hasClipboard = Object.keys(clipboardEntries).length > 0;
-  const isOnItem = clickedIndex !== null;
+  const isOnItem = lastSelectedIndex !== null;
 
-  const clickedEntry = clickedIndex !== null ? entries[clickedIndex] : null;
-
-  const handleClose = () => {
-    appStateStore.setState({ contextMenuAnchor: null, contextMenuIndex: null });
-  };
-
-  const handleOpenHere = () => {
-    openInEnvironment("workspace");
-    handleClose();
-  };
-
-  const handleNavigateUp = () => {
-    navigateUp();
-    handleClose();
-  };
-
-  const handleOpenInTab = () => {
-    if (clickedEntry) {
-      openFile(clickedEntry.filePath);
-    }
-    handleClose();
-  };
-
-  const handleShowProperties = () => {
-    if (clickedEntry) {
-      openPropertyDialog();
-    }
-    handleClose();
-  };
-
-  const handleCopy = () => {
-    writeClipboard();
-    handleClose();
-  };
-
-  const handlePaste = () => {
-    readClipboard();
-    handleClose();
-  };
-
-  const handleCreateFolder = () => {
-    createNewFolder();
-    handleClose();
-  };
-
-  const handleCreateFile = () => {
-    createNewFile();
-    handleClose();
-  };
-
-  if (!contextMenuAnchor) return null;
+  const clickedEntry = lastSelectedIndex !== null ? entries[lastSelectedIndex] : null;
 
   return (
     <>
       <Menu
-        open={open}
-        onClose={handleClose}
+        open={Boolean(contextMenuAnchor)}
+        onClose={closeContextMenu}
         anchorReference="anchorPosition"
-        anchorPosition={{ top: contextMenuAnchor.y, left: contextMenuAnchor.x }}
+        anchorPosition={contextMenuAnchor!}
         slotProps={{
           paper: {
             sx: {
@@ -94,13 +53,13 @@ export const ContextMenu = () => {
         }}
       >
         {/* Navigation section - always shown */}
-        <MenuItem onClick={handleOpenHere}>
+        <MenuItem onClick={createContextMenuHandler(() => openInEnvironment("workspace"))}>
           <ListItemIcon>
             <i className="codicon codicon-folder-library" />
           </ListItemIcon>
           <ListItemText>在此開啟...</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleNavigateUp} disabled={isCurrentRoot}>
+        <MenuItem onClick={createContextMenuHandler(navigateUp)} disabled={isCurrentRoot}>
           <ListItemIcon>
             <i className="codicon codicon-arrow-up" />
           </ListItemIcon>
@@ -112,13 +71,13 @@ export const ContextMenu = () => {
         {/* Item-specific actions - only shown when clicking on an item */}
         {isOnItem && (
           <>
-            <MenuItem onClick={handleOpenInTab}>
+            <MenuItem onClick={createContextMenuHandler(() => clickedEntry && openFile(clickedEntry.filePath))}>
               <ListItemIcon>
                 <i className="codicon codicon-go-to-file" />
               </ListItemIcon>
               <ListItemText>在分頁開啟</ListItemText>
             </MenuItem>
-            <MenuItem onClick={handleShowProperties}>
+            <MenuItem onClick={createContextMenuHandler(() => clickedEntry && openPropertyDialog())}>
               <ListItemIcon>
                 <i className="codicon codicon-info" />
               </ListItemIcon>
@@ -130,13 +89,13 @@ export const ContextMenu = () => {
         )}
 
         {/* Create actions */}
-        <MenuItem onClick={handleCreateFolder}>
+        <MenuItem onClick={createContextMenuHandler(createNewFolder)}>
           <ListItemIcon>
             <i className="codicon codicon-new-folder" />
           </ListItemIcon>
           <ListItemText>新增資料夾</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handleCreateFile}>
+        <MenuItem onClick={createContextMenuHandler(createNewFile)}>
           <ListItemIcon>
             <i className="codicon codicon-new-file" />
           </ListItemIcon>
@@ -146,13 +105,13 @@ export const ContextMenu = () => {
         <Divider />
 
         {/* Clipboard operations - always shown */}
-        <MenuItem onClick={handleCopy} disabled={!hasSelection}>
+        <MenuItem onClick={createContextMenuHandler(writeClipboard)} disabled={!hasSelection}>
           <ListItemIcon>
             <i className="codicon codicon-copy" />
           </ListItemIcon>
           <ListItemText>複製</ListItemText>
         </MenuItem>
-        <MenuItem onClick={handlePaste} disabled={!hasClipboard}>
+        <MenuItem onClick={createContextMenuHandler(readClipboard)} disabled={!hasClipboard}>
           <ListItemIcon>
             <i className="codicon codicon-clippy" />
           </ListItemIcon>

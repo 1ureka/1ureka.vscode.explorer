@@ -1,6 +1,7 @@
 import { appStateStore } from "@view/store/data";
 import { tableClass } from "@view/layout-table/config";
 import { tableRowIndexAttr } from "@view/layout-table/TableRow";
+import { selectRow } from "@view/action/selection";
 
 /**
  * 根據事件獲取對應的資料列索引
@@ -29,10 +30,12 @@ const registerContextMenu = () => {
     if (!e.target) return;
 
     const index = getIndexFromEvent(e);
-    appStateStore.setState({
-      contextMenuAnchor: { x: e.clientX, y: e.clientY },
-      contextMenuIndex: index,
-    });
+    if (index !== null) {
+      // 該設置是為了方便在右鍵選單中透過強制選取該列，來重新命名、刪除等操作
+      selectRow({ index, isAdditive: false, isRange: false, forceSelect: true });
+    }
+
+    appStateStore.setState({ contextMenuAnchor: { top: e.clientY, left: e.clientX } });
   };
 
   window.addEventListener("contextmenu", handleContextMenu, true);
@@ -42,7 +45,7 @@ const registerContextMenu = () => {
  * 關閉右鍵選單
  */
 const closeContextMenu = () => {
-  appStateStore.setState({ contextMenuAnchor: null, contextMenuIndex: null });
+  appStateStore.setState({ contextMenuAnchor: null });
 };
 
 /**

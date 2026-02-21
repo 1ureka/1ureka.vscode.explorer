@@ -62,8 +62,7 @@ const initialViewState: ViewState = {
 type AppState = {
   showPropertyDialog: boolean;
   showLeftPanel: boolean;
-  contextMenuAnchor: { x: number; y: number } | null;
-  contextMenuIndex: number | null;
+  contextMenuAnchor: { top: number; left: number } | null;
 };
 
 type NavigationState = {
