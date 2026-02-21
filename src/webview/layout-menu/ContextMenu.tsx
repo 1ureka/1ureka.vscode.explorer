@@ -2,7 +2,7 @@ import { Divider, Popover } from "@mui/material";
 import { appStateStore, dataStore, selectionStore, clipboardStore, viewDataStore } from "@view/store/data";
 import { openInEnvironment, navigateUp } from "@view/action/navigation";
 import { writeClipboard, readClipboard } from "@view/action/clipboard";
-import { openFile, createNewFolder, createNewFile } from "@view/action/operation";
+import { openFile, createNewFolder, createNewFile, deleteItems } from "@view/action/operation";
 import { closeContextMenu, openPropertyDialog } from "@view/action/app";
 import { contextMenuSx } from "@view/layout-menu/config";
 import { ContextMenuButton } from "@view/layout-menu/ContextMenuButton";
@@ -70,8 +70,13 @@ export const ContextMenu = () => {
     >
       <ContextMenuButton
         actionIcon="codicon codicon-folder-library"
-        actionName="在此開啟..."
+        actionName="在此開啟新工作區"
         onClick={createContextMenuHandler(() => openInEnvironment("workspace"))}
+      />
+      <ContextMenuButton
+        actionIcon="codicon codicon-terminal"
+        actionName="在此開啟終端機"
+        onClick={createContextMenuHandler(() => openInEnvironment("terminal"))}
       />
       <ContextMenuButton
         actionIcon="codicon codicon-arrow-up"
@@ -106,6 +111,12 @@ export const ContextMenu = () => {
         actionName="貼上"
         onClick={createContextMenuHandler(readClipboard)}
         disabled={!hasClipboard}
+      />
+      <ContextMenuButton
+        actionIcon="codicon codicon-trash"
+        actionName="刪除"
+        onClick={createContextMenuHandler(deleteItems)}
+        disabled={!hasSelection}
       />
     </Popover>
   );
