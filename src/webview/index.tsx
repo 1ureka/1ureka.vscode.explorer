@@ -14,7 +14,7 @@ import { TableHead } from "@view/layout-table/TableHead";
 import { TableBody } from "@view/layout-table/TableBody";
 import { ActionBar } from "@view/layout/ActionBar";
 import { ImageGrid } from "@view/layout-grid/ImageGrid";
-import { ContextMenu } from "@view/components/ContextMenu";
+import { ContextMenu } from "@view/layout-menu/ContextMenu";
 import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
 
 const appClassName = {
