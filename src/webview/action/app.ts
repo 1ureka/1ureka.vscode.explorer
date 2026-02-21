@@ -29,9 +29,9 @@ const registerContextMenu = () => {
     if (!e.target) return;
 
     const index = getIndexFromEvent(e);
-    appStateStore.setState({ 
+    appStateStore.setState({
       contextMenuAnchor: { x: e.clientX, y: e.clientY },
-      contextMenuIndex: index 
+      contextMenuIndex: index,
     });
   };
 
@@ -45,4 +45,18 @@ const closeContextMenu = () => {
   appStateStore.setState({ contextMenuAnchor: null, contextMenuIndex: null });
 };
 
-export { registerContextMenu, closeContextMenu };
+/**
+ * 開啟內容對話框
+ */
+const openContentDialog = () => {
+  appStateStore.setState({ showContentDialog: true });
+};
+
+/**
+ * 關閉內容對話框
+ */
+const closeContentDialog = () => {
+  appStateStore.setState({ showContentDialog: false });
+};
+
+export { registerContextMenu, closeContextMenu, openContentDialog, closeContentDialog };

@@ -4,10 +4,14 @@ import { Box } from "@mui/material";
 import { Dialog } from "@view/components/Dialog";
 import { propertyDialogSx, propertyDialogClassName, rowHeight } from "@view/layout-dialog/config";
 import { ActionButton, ActionGroup, ActionInput } from "@view/components/Action";
+
 import { useLastSelectedItem } from "@view/layout-dialog/hooks";
-import { directorySizeInfoCache, fileAttributesCache, fileAvailabilityCache } from "@view/store/cache";
-import { writeSystemClipboard } from "@view/action/clipboard";
 import { ImageDetailProps, isImageFile } from "@view/layout-dialog/ImageDetail";
+
+import { directorySizeInfoCache, fileAttributesCache, fileAvailabilityCache } from "@view/store/cache";
+import { appStateStore } from "@view/store/data";
+import { writeSystemClipboard } from "@view/action/clipboard";
+import { closeContentDialog } from "@view/action/app";
 
 import type { FileMetadata } from "@host/types";
 import { formatFileSize, formatFileType, formatDateTime } from "@shared/utils/formatter";
@@ -162,8 +166,9 @@ const DirProps = memo(() => {
 /**
  * 屬性對話框元件，顯示選取項目的詳細資訊
  */
-const PropertyDialog = memo(({ open, onClose }: { open: boolean; onClose: () => void }) => {
+const PropertyDialog = memo(() => {
   const selectedItem = useLastSelectedItem();
+  const open = appStateStore((state) => state.showContentDialog);
 
   if (!selectedItem) return null;
 
@@ -177,7 +182,7 @@ const PropertyDialog = memo(({ open, onClose }: { open: boolean; onClose: () => 
   }
 
   return (
-    <Dialog open={open} onClose={onClose}>
+    <Dialog open={open} onClose={closeContentDialog}>
       <Box sx={propertyDialogSx}>
         <div className={className.header}>
           <i className={assignIcon(selectedItem)} />
@@ -236,7 +241,7 @@ const PropertyDialog = memo(({ open, onClose }: { open: boolean; onClose: () => 
 
       <Box sx={{ position: "absolute", inset: "0px 0px auto auto", p: 1.5 }}>
         <ActionGroup size="small">
-          <ActionButton actionIcon="codicon codicon-close" actionName="關閉" onClick={onClose} />
+          <ActionButton actionIcon="codicon codicon-close" actionName="關閉" onClick={closeContentDialog} />
         </ActionGroup>
       </Box>
     </Dialog>

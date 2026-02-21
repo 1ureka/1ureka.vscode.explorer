@@ -16,6 +16,13 @@ if (!initialData) {
   throw new Error("無法取得檔案系統初始資料");
 }
 
+const initialAppState = {
+  showContentDialog: false,
+  showLeftPanel: true,
+  contextMenuAnchor: null,
+  contextMenuIndex: null,
+};
+
 const initialPath = initialData.currentPath;
 
 const initialPathHeatmap = new Map<string, number>();
@@ -53,6 +60,7 @@ const initialViewState: ViewState = {
 // ----------------------------------------------------------------------------
 
 type AppState = {
+  showContentDialog: boolean;
   showLeftPanel: boolean;
   contextMenuAnchor: { x: number; y: number } | null;
   contextMenuIndex: number | null;
@@ -116,7 +124,7 @@ type RenameState = {
 /**
  * 建立用於儲存應用程式狀態的容器
  */
-const appStateStore = create<AppState>(() => ({ showLeftPanel: true, contextMenuAnchor: null, contextMenuIndex: null }));
+const appStateStore = create<AppState>(() => ({ ...initialAppState }));
 
 /**
  * 建立前端用於儲存檔案系統資料的容器

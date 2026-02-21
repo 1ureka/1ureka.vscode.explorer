@@ -1,4 +1,4 @@
-import { memo, useState } from "react";
+import { memo } from "react";
 import { Box } from "@mui/material";
 import { ActionButton, ActionGroup, ActionInput } from "@view/components/Action";
 import { clipboardStore, renameStore, selectionStore, viewDataStore } from "@view/store/data";
@@ -6,7 +6,7 @@ import { clipboardStore, renameStore, selectionStore, viewDataStore } from "@vie
 import { deleteItems, renameItem, renameItemTemp } from "@view/action/operation";
 import { readClipboard, writeClipboard } from "@view/action/clipboard";
 import { selectAll, selectInvert, selectNone } from "@view/action/selection";
-import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
+import { openContentDialog } from "@view/action/app";
 
 /**
  * 針對單一選取項目所顯示的操作群組 (最後選取的單一項目)
@@ -14,10 +14,6 @@ import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
 const ActionGroupForSingleItem = memo(() => {
   const destName = renameStore((state) => state.destName);
   const lastSelectedIndex = selectionStore((state) => state.lastSelectedIndex);
-
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <ActionGroup>
@@ -40,9 +36,8 @@ const ActionGroupForSingleItem = memo(() => {
         actionName="內容"
         actionDetail="檢視檔案或資料夾的詳細資訊"
         disabled={lastSelectedIndex === null}
-        onClick={handleOpen}
+        onClick={openContentDialog}
       />
-      <PropertyDialog open={open} onClose={handleClose} />
     </ActionGroup>
   );
 });

@@ -1,10 +1,9 @@
-import { useState } from "react";
 import { Menu, MenuItem, Divider, ListItemIcon, ListItemText } from "@mui/material";
 import { appStateStore, dataStore, selectionStore, clipboardStore, viewDataStore } from "@view/store/data";
 import { openInEnvironment, navigateUp } from "@view/action/navigation";
 import { writeClipboard, readClipboard } from "@view/action/clipboard";
 import { openFile, createNewFolder, createNewFile } from "@view/action/operation";
-import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
+import { openContentDialog } from "@view/action/app";
 
 /**
  * 右鍵選單元件
@@ -17,8 +16,6 @@ export const ContextMenu = () => {
   const selected = selectionStore((state) => state.selected);
   const clipboardEntries = clipboardStore((state) => state.entries);
   const entries = viewDataStore((state) => state.entries);
-
-  const [propertyDialogOpen, setPropertyDialogOpen] = useState(false);
 
   const open = Boolean(contextMenuAnchor);
   const hasSelection = selected.some((s) => s === 1);
@@ -50,7 +47,7 @@ export const ContextMenu = () => {
 
   const handleShowProperties = () => {
     if (clickedEntry) {
-      setPropertyDialogOpen(true);
+      openContentDialog();
     }
     handleClose();
   };
@@ -162,7 +159,6 @@ export const ContextMenu = () => {
           <ListItemText>貼上</ListItemText>
         </MenuItem>
       </Menu>
-      <PropertyDialog open={propertyDialogOpen} onClose={() => setPropertyDialogOpen(false)} />
     </>
   );
 };
