@@ -6,15 +6,13 @@ import { writeClipboard, readClipboard } from "@view/action/clipboard";
 import { openFile, createNewFolder, createNewFile } from "@view/action/operation";
 import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
 
-type ContextMenuProps = {
-  clickedIndex: number | null;
-};
-
 /**
  * 右鍵選單元件
  */
-export const ContextMenu = ({ clickedIndex }: ContextMenuProps) => {
+export const ContextMenu = () => {
+  const clickedIndex = appStateStore((state) => state.contextMenuIndex);
   const contextMenuAnchor = appStateStore((state) => state.contextMenuAnchor);
+
   const isCurrentRoot = dataStore((state) => state.isCurrentRoot);
   const selected = selectionStore((state) => state.selected);
   const clipboardEntries = clipboardStore((state) => state.entries);
@@ -26,7 +24,7 @@ export const ContextMenu = ({ clickedIndex }: ContextMenuProps) => {
   const hasSelection = selected.some((s) => s === 1);
   const hasClipboard = Object.keys(clipboardEntries).length > 0;
   const isOnItem = clickedIndex !== null;
-  
+
   const clickedEntry = clickedIndex !== null ? entries[clickedIndex] : null;
 
   const handleClose = () => {

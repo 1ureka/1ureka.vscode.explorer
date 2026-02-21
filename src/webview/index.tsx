@@ -71,7 +71,6 @@ const containerSx: SxProps = {
 
 const App = () => {
   const showLeftPanel = appStateStore((state) => state.showLeftPanel);
-  const contextMenuIndex = appStateStore((state) => state.contextMenuIndex);
 
   return (
     <Box className={appClassName.scrollContainer} sx={containerSx}>
@@ -91,7 +90,7 @@ const App = () => {
           </Box>
         </div>
         <LoadingDisplay />
-        <ContextMenu clickedIndex={contextMenuIndex} />
+        <ContextMenu />
       </div>
     </Box>
   );
