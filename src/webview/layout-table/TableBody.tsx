@@ -8,7 +8,7 @@ import { TableRow, TableRowNoItem } from "@view/layout-table/TableRow";
 
 import { loadingStore } from "@view/store/queue";
 import { viewDataStore } from "@view/store/data";
-import { handleClick, handleContextMenu, handleDragStart } from "@view/action/table";
+import { handleClick, handleDragStart } from "@view/action/table";
 
 /**
  * ### 表格背景設計
@@ -209,7 +209,6 @@ const TableBody = memo(() => {
       ref={containerRef}
       sx={tableSx}
       onClick={handleClick}
-      onContextMenu={handleContextMenu}
       onDragStart={handleDragStart}
     >
       <TableBodyVirtualRows />

@@ -1,6 +1,7 @@
 import { appStateStore } from "@view/store/data";
 import { tableClass } from "@view/layout-table/config";
 import { tableRowIndexAttr } from "@view/layout-table/TableRow";
+import { selectRow } from "@view/action/selection";
 
 /**
  * 根據事件獲取對應的資料列索引
@@ -18,7 +19,7 @@ const getIndexFromEvent = (e: PointerEvent) => {
 };
 
 /**
- * ?
+ * 處理右鍵選單事件
  */
 const registerContextMenu = () => {
   const handleContextMenu = (e: PointerEvent) => {
@@ -28,15 +29,13 @@ const registerContextMenu = () => {
     e.stopPropagation();
     if (!e.target) return;
 
-    appStateStore.setState({ contextMenuAnchor: { x: e.clientX, y: e.clientY } });
     const index = getIndexFromEvent(e);
-
-    if (index === null) {
-      // TODO: 決定不在 row 上右鍵時 context menu 的內容
-      return;
+    if (index !== null) {
+      // 該設置是為了方便在右鍵選單中透過強制選取該列，來重新命名、刪除等操作
+      selectRow({ index, isAdditive: false, isRange: false, forceSelect: true });
     }
 
-    // TODO: 根據 index 決定 context menu 的內容
+    appStateStore.setState({ contextMenuAnchor: { top: e.clientY, left: e.clientX } });
   };
 
   window.addEventListener("contextmenu", handleContextMenu, true);
@@ -49,4 +48,18 @@ const closeContextMenu = () => {
   appStateStore.setState({ contextMenuAnchor: null });
 };
 
-export { registerContextMenu, closeContextMenu };
+/**
+ * 開啟內容對話框
+ */
+const openPropertyDialog = () => {
+  appStateStore.setState({ showPropertyDialog: true });
+};
+
+/**
+ * 關閉內容對話框
+ */
+const closePropertyDialog = () => {
+  appStateStore.setState({ showPropertyDialog: false });
+};
+
+export { registerContextMenu, closeContextMenu, openPropertyDialog, closePropertyDialog };

@@ -4,7 +4,7 @@ import { readInitData } from "@view/store/init";
 import { appStateStore } from "@view/store/data";
 import { setupDependencyChain } from "@view/store/dependency";
 import { registerAllShortcuts } from "@view/action/shortcuts";
-import { registerContextMenu } from "@view/action/contextmenu";
+import { registerContextMenu } from "@view/action/app";
 
 import { Box, type SxProps } from "@mui/material";
 import { LoadingDisplay } from "@view/layout/LoadingDisplay";
@@ -14,6 +14,8 @@ import { TableHead } from "@view/layout-table/TableHead";
 import { TableBody } from "@view/layout-table/TableBody";
 import { ActionBar } from "@view/layout/ActionBar";
 import { ImageGrid } from "@view/layout-grid/ImageGrid";
+import { ContextMenu } from "@view/layout-menu/ContextMenu";
+import { PropertyDialog } from "@view/layout-dialog/PropertyDialog";
 
 const appClassName = {
   scrollContainer: "explorer-scroll-container",
@@ -89,6 +91,8 @@ const App = () => {
           </Box>
         </div>
         <LoadingDisplay />
+        <ContextMenu />
+        <PropertyDialog />
       </div>
     </Box>
   );
