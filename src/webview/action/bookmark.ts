@@ -1,6 +1,7 @@
 import { invoke } from "@view/store/init";
 import { dataStore, navigationExternalStore } from "@view/store/data";
 import { navigateToFolder } from "@view/action/navigation";
+import type { ListItem } from "@view/components/List";
 
 /**
  * 從 Host 端讀取書籤列表並更新至 store
@@ -20,10 +21,11 @@ const addBookmark = async () => {
 };
 
 /**
- * 刪除指定的書籤
+ * 刪除當前目錄的書籤
  */
-const removeBookmark = async (dirPath: string) => {
-  const bookmarks = await invoke("bookmarks.remove", dirPath);
+const removeBookmark = async () => {
+  const { currentPath } = dataStore.getState();
+  const bookmarks = await invoke("bookmarks.remove", currentPath);
   navigationExternalStore.setState({ favoritePaths: bookmarks });
 };
 
@@ -36,18 +38,47 @@ const clearBookmarks = async () => {
 };
 
 /**
- * 移動書籤到指定位置
+ * 將當前目錄的書籤向上移動
  */
-const moveBookmark = async (dirPath: string, direction: "top" | "bottom" | "up" | "down") => {
-  const bookmarks = await invoke("bookmarks.move", { dirPath, direction });
+const moveBookmarkUp = async () => {
+  const { currentPath } = dataStore.getState();
+  const bookmarks = await invoke("bookmarks.move", { dirPath: currentPath, direction: "up" });
   navigationExternalStore.setState({ favoritePaths: bookmarks });
 };
 
 /**
- * 導航到書籤位置
+ * 將當前目錄的書籤向下移動
  */
-const navigateToBookmark = (dirPath: string) => {
-  navigateToFolder({ dirPath });
+const moveBookmarkDown = async () => {
+  const { currentPath } = dataStore.getState();
+  const bookmarks = await invoke("bookmarks.move", { dirPath: currentPath, direction: "down" });
+  navigationExternalStore.setState({ favoritePaths: bookmarks });
 };
 
-export { loadBookmarks, addBookmark, removeBookmark, clearBookmarks, moveBookmark, navigateToBookmark };
+/**
+ * 將當前目錄的書籤移至頂部
+ */
+const moveBookmarkTop = async () => {
+  const { currentPath } = dataStore.getState();
+  const bookmarks = await invoke("bookmarks.move", { dirPath: currentPath, direction: "top" });
+  navigationExternalStore.setState({ favoritePaths: bookmarks });
+};
+
+/**
+ * 將當前目錄的書籤移至底部
+ */
+const moveBookmarkBottom = async () => {
+  const { currentPath } = dataStore.getState();
+  const bookmarks = await invoke("bookmarks.move", { dirPath: currentPath, direction: "bottom" });
+  navigationExternalStore.setState({ favoritePaths: bookmarks });
+};
+
+/**
+ * 從列表項目點擊導航到書籤位置
+ */
+const navigateToBookmark = ({ id }: ListItem) => {
+  navigateToFolder({ dirPath: id });
+};
+
+export { loadBookmarks, addBookmark, removeBookmark, clearBookmarks, navigateToBookmark };
+export { moveBookmarkUp, moveBookmarkDown, moveBookmarkTop, moveBookmarkBottom };
