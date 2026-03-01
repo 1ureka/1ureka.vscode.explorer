@@ -37,6 +37,14 @@ const openInEnvironment = (target: "workspace" | "terminal") => {
 };
 
 /**
+ * 在作業系統預設的檔案總管中開啟當前目錄
+ */
+const openInDefaultExplorer = () => {
+  const { currentPath } = dataStore.getState();
+  invoke("system.open.default.explorer", currentPath);
+};
+
+/**
  * 獲取/更新磁碟機列表
  */
 const readDrives = async () => {
@@ -162,6 +170,6 @@ const navigateToImageGridView = () => {
   return navigateToImages({ dirPath: currentPath });
 };
 
-export { stageDestinationPath, openInEnvironment, refresh, readDrives, navigateToImageGridView };
+export { stageDestinationPath, openInEnvironment, openInDefaultExplorer, refresh, readDrives, navigateToImageGridView };
 export { navigateGotoFolder, navigateToFolder, navigateUp, navigateToPreviousFolder, navigateToNextFolder };
 export { clearNavigationHistory };
